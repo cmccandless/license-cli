@@ -1,0 +1,56 @@
+{
+  "modules": {
+    "cli": {
+      "examples": [],
+      "args": [],
+      "modules": {
+        "status": {},
+        "list": {
+          "args": [
+            {
+              "short": "-r",
+              "long": "--rules",
+              "action": "store_true"
+            },
+            {
+              "short": "-p",
+              "long": "--permissions",
+              "nargs": "+",
+              "choices": [
+                "commerical-use",
+                "modifications",
+                "distribution",
+                "private-use",
+                "patent-use"
+              ]
+            },
+            {
+              "short": "-c",
+              "long": "--conditions",
+              "nargs": "+",
+              "choices": [
+                "include-copyright",
+                "document-change",
+                "network-use-disclose",
+                "same-license",
+                "same-license--file",
+                "same-license--library"
+              ]
+            },
+            {
+              "short": "-l",
+              "long": "--limitations",
+              "nargs": "+",
+              "choices": [
+                "trademark-use",
+                "liability",
+                "patent-use",
+                "warranty"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

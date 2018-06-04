@@ -1,0 +1,20 @@
+_cli()
+{
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    case "${prev}" in
+        -h|--help|-r|--rules) COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) ) ;;
+        -*|--*)
+            opts="$(${COMP_WORDS[*]}commands)"
+            COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        ;;
+        *)
+            opts="$(${COMP_WORDS[*]} commands)"
+            COMPREPLY=( $(compgen -W "--help ${opts}" -- ${cur}) )
+        ;;
+    esac
+}
+complete -F _cli cli.py
