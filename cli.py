@@ -135,15 +135,9 @@ if __name__ == '__main__':
         argv[-1].endswith('commands')
     ):
         import argparse
-        # import re
-        # argv[-1] = re.sub('^(.*)commands$', r'\1', argv[-1])
-        # if argv[-1]:
         argv = argv[:-1]
-        # print(argv)
         for v in get_valid(parser, argv):
             print(v)
         sys.exit(0)
-    print('NO!')
-    sys.exit(1)
     opts = parser.parse_args(argv)
     opts.func(opts)
