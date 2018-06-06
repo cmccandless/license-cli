@@ -26,7 +26,7 @@ class License(object):
         self.nickname = None
         for k, v in json_license.items():
             setattr(self, k, v)
-    
+
     def __str__(self):
         if self.nickname:
             return '{} ({})'.format(self.title, self.nickname)
@@ -66,7 +66,7 @@ def api_status(opts):
 
 
 parser = argutil.get_parser()
-        
+
 
 def get_parser_info(parser):
     opts = {}
@@ -93,7 +93,10 @@ def get_parser_info(parser):
                 for o in a.option_strings:
                     if len(a.option_strings) < 2 or o.startswith('--'):
                         opts[o] = None
-            elif isinstance(a, (argparse._StoreAction, argparse._AppendAction)):
+            elif isinstance(
+                a,
+                (argparse._StoreAction, argparse._AppendAction)
+            ):
                 for o in a.option_strings:
                     if len(a.option_strings) < 2 or o.startswith('--'):
                         opts[o] = a.choices or []
@@ -130,6 +133,7 @@ if __name__ == '__main__':
         logging.basicConfig(level=logging.DEBUG)
         argv = [v for v in argv if v != '--debug']
     if (
+        argv and
         '-h' not in argv and
         '--help' not in argv and
         argv[-1].endswith('commands')
